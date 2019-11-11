@@ -14,7 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "LuLu", length = 1, discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("P")
 public class Pessoa implements Identificavel {
@@ -28,8 +28,16 @@ public class Pessoa implements Identificavel {
 		@Column(insertable=false, updatable=false)
 		private int cpf;
 		private Date dataNasc;
-
+		private int tipo;
 	
+
+	public int getTipo() {
+			return tipo;
+		}
+
+		public void setTipo(int tipo) {
+			this.tipo = tipo;
+		}
 
 	public Long getId() {
 			return id;
@@ -63,10 +71,6 @@ public class Pessoa implements Identificavel {
 		this.dataNasc = dataNasc;
 	}
 	
-	
-	
-
-
 }
 	
 	
